@@ -1,0 +1,41 @@
+    do
+    {
+        end = fscanf(proj_input, "%s", data);
+        printf("%s--", data);
+
+        if (strcmp(data, "add") == 0)
+        {
+            fscanf(proj_input, "%s", data);
+            enqueue(inQueue, atoi(data));
+            push(inStack, atoi(data));
+        }
+        else
+        {
+            enqueue(outQueue, pop(inStack));
+            push(outStack, dequeue(inQueue));
+        }
+
+    }while(end != EOF);
+
+
+
+
+    //Loops to pop,push,enqueue, and dequeue data
+    //Also reads from test.dat until it reaches the EOF marker
+    do
+    {
+        str = fgets(data, 10, proj_input);
+        sscanf("%s %d", data, &value);
+        printf("Data: %s Value: %d\n",data,value);
+        if (strcmp(data, "add") == 0)
+        {
+           enqueue(inQueue, value);
+            push(inStack, value);
+        }
+        else
+        {
+            enqueue(outQueue, pop(inStack));
+            push(outStack, dequeue(inQueue));
+        }
+
+    } while (str != '\0');
